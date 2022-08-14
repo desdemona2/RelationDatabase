@@ -1,5 +1,6 @@
 package com.redheadhammer.multidatabase.entities;
 
+import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
@@ -7,9 +8,9 @@ import androidx.room.PrimaryKey;
 public class School {
 
     @PrimaryKey(autoGenerate = false)
-    private final String schoolName;
+    @NonNull public String schoolName;
 
-    public School(String schoolName) {
+    public School(@NonNull String schoolName) {
         this.schoolName = schoolName;
     }
 }

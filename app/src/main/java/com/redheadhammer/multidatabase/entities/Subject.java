@@ -1,4 +1,4 @@
-package com.redheadhammer.multidatabase;
+package com.redheadhammer.multidatabase.entities;
 
 
 import androidx.annotation.NonNull;
@@ -7,7 +7,6 @@ import androidx.room.PrimaryKey;
 
 @Entity
 public class Subject {
-
     @PrimaryKey
     @NonNull public String subjectName;
 

@@ -12,6 +12,9 @@ import com.redheadhammer.multidatabase.entities.School;
 import com.redheadhammer.multidatabase.entities.Student;
 import com.redheadhammer.multidatabase.entities.relations.SchoolAndDirector;
 import com.redheadhammer.multidatabase.entities.relations.SchoolWithStudents;
+import com.redheadhammer.multidatabase.entities.relations.StudentSubjectCrossRef;
+import com.redheadhammer.multidatabase.entities.relations.StudentWithSubjects;
+import com.redheadhammer.multidatabase.entities.relations.SubjectWithStudents;
 
 import java.util.List;
 
@@ -34,6 +37,28 @@ public interface SchoolDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertStudent(Student student);
+
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    void insertSubject(Subject subject);
+
+
+    // Insert for Cross Reference Class.
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    void insertStudentSubjectCrossRef(StudentSubjectCrossRef crossRef);
+
+
+
+
+    // getStudentsOfSubject -> N to M relation
+    @Transaction
+    @Query("SELECT * FROM student WHERE studentName = :studentName")
+    List<StudentWithSubjects> getSubjectsOfStudent(String studentName);
+
+
+    @Transaction
+    @Query("SELECT * FROM subject WHERE subjectName = :subjectName ")
+    List<SubjectWithStudents> getStudentsOfSubject(String subjectName);
 
 
 

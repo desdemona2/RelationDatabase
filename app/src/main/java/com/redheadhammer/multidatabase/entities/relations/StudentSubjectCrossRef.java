@@ -1,14 +1,18 @@
 package com.redheadhammer.multidatabase.entities.relations;
 
+import androidx.annotation.NonNull;
+import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 
 @Entity(primaryKeys = {"studentName", "subjectName"})
 public class StudentSubjectCrossRef {
 
-    private final String studentName;
-    private final String subjectName;
+    @NonNull public String studentName;
 
-    public StudentSubjectCrossRef(String studentName, String subjectName) {
+    @ColumnInfo(index = true)
+    @NonNull public String subjectName;
+
+    public StudentSubjectCrossRef(@NonNull String studentName, @NonNull String subjectName) {
         this.studentName = studentName;
         this.subjectName = subjectName;
     }
