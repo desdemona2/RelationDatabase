@@ -28,4 +28,8 @@ public class SchoolWithStudents {
     )
     private final List<Student> studentName;
 
+    public SchoolWithStudents(School schoolName, List<Student> studentName) {
+        this.schoolName = schoolName;
+        this.studentName = studentName;
+    }
 }

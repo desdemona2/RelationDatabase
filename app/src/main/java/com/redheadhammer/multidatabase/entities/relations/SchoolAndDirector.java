@@ -10,8 +10,8 @@ import com.redheadhammer.multidatabase.entities.School;
 /**
  * ONE TO ONE RELATION:
  * For one to one relationship get instance of both tables
- * parent table should be annotated with @Embedded and
- * child table should be annotated with @Relation and
+ * parent entity should be annotated with @Embedded and
+ * child entity should be annotated with @Relation and
  * relational key should be defined inside as parentColumn
  * and entityColumn.
  */
@@ -19,12 +19,17 @@ public class SchoolAndDirector {
 
     // parent of the Relation
     @Embedded
-    School school;
+    final School school;
 
     @Relation(
             // relational key in both tables (common key)
             parentColumn = "schoolName",
             entityColumn = "schoolName"
     )
-    Director director;
+    final Director director;
+
+    public SchoolAndDirector(School school, Director director) {
+        this.school = school;
+        this.director = director;
+    }
 }
